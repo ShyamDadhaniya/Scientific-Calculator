@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assest/styles/all.css">
+    <link rel="stylesheet" href="./assest/styles/bootstrap.css">
+    <link rel="stylesheet" href="./assest/styles/style.css">
+    <title>Scientific Calculator</title>
+</head>
+
+<body>
+    <div class="container h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="main">
+                <div id="operation" class="form-control form-control-lg text-right">  
+                </div>
+        <div class="row d-flex d-flex">
+            <div class="col">
+                <button class="btn fw-500" onclick="deg()">DEG</button>
+                <button class="btn fw-500" onclick="exp()">F-E</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex">
+                <button id="mc-on" class="btn gray" data-toggle="tooltip" title="Memory Clear" onclick="mClear()">MC</button>
+                <button id="mr-on" class="btn gray" data-toggle="tooltip" title="Memory ReCall" onclick="mRecall()">MR</button>
+                <button class="btn fw-500" data-toggle="tooltip" title="Memory Plus" onclick="mPlus()">M+</button>
+                <button class="btn fw-500" data-toggle="tooltip" title="Memory Minus" onclick="mMinus()">M-</button>
+                <button class="btn fw-500" data-toggle="tooltip" title="Memory Store" onclick="memoryStore()">MS</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-start">
+                <div class="dropdown">
+                    <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>&#8895;</span> Trigonomerty
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div class="dropdown-item" onclick="trigonometry('sin')">sin</div>
+                      <div class="dropdown-item" onclick="trigonometry('cos')">cos</div>
+                      <div class="dropdown-item" onclick="trigonometry('tan')">tan</div>
+                      <div class="dropdown-item" onclick="trigonometry('cot')">cot</div>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>&#402;</span> Function
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div class="dropdown-item" data-value = "ceil" onclick="mathsFun('ceil')">Ceil</div>
+                      <div class="dropdown-item" data-value = "floor" onclick="mathsFun('floor')">Floor</div>
+                      <div class="dropdown-item" data-value = "round" onclick="mathsFun('round')">Round</div>
+                      <div class="dropdown-item" data-value = "trunc" onclick="mathsFun('trunc')">Trunc</div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn">2<sup>nd</sup></button>
+                <button class="btn" data-value = "3.14" onclick="addNum(this)">π</button>
+                <button class="btn" data-value = "2.7182" onclick="addNum(this)">e</button>
+                <button class="btn" data-value = "clear" onclick="clearData()">C</button>
+                <button class="btn" data-value = "backspace" onclick="backspace()"><i class="fas fa-backspace"></i></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn" data-value = "^2" onclick="square()">x <sup>2</sup></button>
+                <button class="btn" data-value = "1/" onclick="addNum(this)">1/x</button>
+                <button class="btn" onclick="absolute()">|x|</button>
+                <button class="btn" onclick="cal_exp()">exp</button>
+                <button class="btn" data-value = "%" onclick="addNum(this)">mod</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn" data-value = "√" onclick="root()">√x</button>
+                <button class="btn" data-value = "(" onclick="addNum(this)">(</button>
+                <button class="btn" data-value = ")" onclick="addNum(this)">)</button>
+                <button class="btn" data-value = "!" onclick="factorial()">n!</button>
+                <button class="btn" data-value = "/" onclick="addNum(this)">÷</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn" data-value = "**" onclick="addNum(this)">x<sup>y</sup></button>
+                <button class="btn" data-value = "7" onclick="addNum(this)"><strong>7</strong></button>
+                <button class="btn" data-value = "8" onclick="addNum(this)"><strong>8</strong></button>
+                <button class="btn" data-value = "9" onclick="addNum(this)"><strong>9</strong></button>
+                <button class="btn" data-value = "*" onclick="addNum(this)">×</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn" data-value = "10^" onclick="tenPower()">10<sup>x</sup></button>
+                <button class="btn" data-value = "4" onclick="addNum(this)"><strong>4</strong></button>
+                <button class="btn" data-value = "5" onclick="addNum(this)"><strong>5</strong></button>
+                <button class="btn" data-value = "6" onclick="addNum(this)"><strong>6</strong></button>
+                <button class="btn" data-value = "-" onclick="addNum(this)">-</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn" data-value = "log" onclick="log()">log</button>
+                <button class="btn" data-value = "1" onclick="addNum(this)"><strong>1</strong></button>
+                <button class="btn" data-value = "2" onclick="addNum(this)"><strong>2</strong></button>
+                <button class="btn" data-value = "3" onclick="addNum(this)"><strong>3</strong></button>
+                <button class="btn" data-value = "+" onclick="addNum(this)">+</button>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col d-flex">
+                <button class="btn mb-0" data-value = "In" onclick="ln()">In</button>
+                <button class="btn mb-0" data-value = "+/-" onclick="plusminus()">+/-</button>
+                <button class="btn mb-0" data-value = "0" onclick="addNum(this)"><strong>0</strong></button>
+                <button class="btn mb-0" data-value = "." onclick="addNum(this)">.</button>
+                <button class="btn-primary mb-0 btn" data-value = "=" onclick="cal()">=</button>
+            </div>
+        </div>
+    </div></div>
+        
+        </div>
+        
+    <script src="./assest/script/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
